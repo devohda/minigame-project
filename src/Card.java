@@ -53,31 +53,6 @@ public class Card {
         return backgroundColor;
     }
 
-   
-    public JPanel makeCard(Graphics paint){
-        JPanel cardPanel = new JPanel();
-        cardPanel.setSize(new Dimension(10,100));
-
-
-        switch (backgroundColor){
-            case WHITE -> {
-                cardPanel.setBackground(Color.WHITE);
-            }
-            case GRAY -> {
-                cardPanel.setBackground(Color.GRAY);
-            }
-            case BLACK -> {
-                cardPanel.setBackground(Color.BLACK);
-            }
-        }
-
-        //cardPanel.setBackground(Color.pink);
-        /*cardPanel.paintComponents(paint);
-        paint.setColor(new Color(30,105,41));
-        paint.fillOval(0,0,50,50);*/
-
-        return cardPanel;
-    }
 
 
 }
