@@ -7,7 +7,6 @@ public class Card {
     private Shape shape;
     private BackgroundColor backgroundColor;
 
-
     //constructor
     public Card(){
         setCardColor();
@@ -87,14 +86,14 @@ public class Card {
             switch (shape){
 
                 case CIRCLE -> { //원 그리기
-                    paint.fillOval(0,0,100,100);
+                    paint.fillOval(15,15,70,70);
                 }
                 case SQUARE -> { // 사각형 그리기
-                    paint.fillRect(0,0,100,100);
+                    paint.fillRect(15,15,70,70);
                 }
                 case TRIANGLE -> { //삼각형 그리기
-                    int x[] = { 0, 50, 100 };
-                    int y[] = { 100, 0, 100 };
+                    int x[] = { 15, 50, 85 };
+                    int y[] = { 85, 15, 85 };
                     paint.fillPolygon( x, y, 3 );
                 }
             }
