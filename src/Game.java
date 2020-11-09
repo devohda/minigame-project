@@ -28,7 +28,6 @@ class Game extends JPanel{
         userinput = new JTextField(5);
         lblScore = new JLabel("점수 : 0");
         lblState = new JLabel("게임을 시작합니다.");
-        _score = 0;
 
         update = new renewScore();
         btnHap.addActionListener(update);
@@ -51,7 +50,17 @@ class Game extends JPanel{
     }//constructor
 
     private Card[] boardInfo;
+    private ArrayList <HashSet> hapset;
+    private ArrayList <HashSet> deleteHapset;
+
     public void init(){
+
+        _score = 0;
+        lblScore.setText("점수 : " + _score);
+        lblState.setText("게임을 시작합니다.");
+
+        hapset = new ArrayList<>();
+        deleteHapset = new ArrayList<>();
 
         setGameBoardInfo(); //게임 초기화
         GameBoardPanel gameBoard = new GameBoardPanel(boardInfo);
@@ -131,12 +140,10 @@ class Game extends JPanel{
         return(stateBg(a,b,c)&&stateColor(a,b,c)&&stateShape(a,b,c));
     }
 
-    private int hapNum;
-    private ArrayList <HashSet> hapset;
 
     public void calculateHap(){
         hapset = new ArrayList<>();
-        hapNum = 0;
+        int hapNum = 0;
 
         //카드 세 개의 조합이 합인 것 찾기
         for (int i = 0; i < 7; i++) {
@@ -171,9 +178,6 @@ class Game extends JPanel{
     /********* 점수 계산하기 *********/
     /*******************************/
 
-
-    private ArrayList <HashSet> deleteHapset = new ArrayList<>();
-    
     class renewScore implements ActionListener{
         
         @Override
@@ -184,6 +188,7 @@ class Game extends JPanel{
                     _score += 3;
                     lblState.setText("'결' 입니다. 짝짝짝!!! 3점 획득하셨습니다!");
                     lblState.setForeground(Color.BLUE);
+                    restartGame();
                 }
                 else{
                     _score -= 1;
@@ -200,12 +205,20 @@ class Game extends JPanel{
                     String userInput = userinput.getText();
                     answer = Integer.parseInt(userInput);
                     System.out.println(answer);
-                    if(answer>=1000) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요");
+                    if(answer>=1000||answer<100) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요"); //숫자가 3개보다 작거나 많을 경우
                     else{
                         HashSet<Integer> userAnswerSet = new HashSet<Integer>(3);
-                        userAnswerSet.add(answer/100);
-                        userAnswerSet.add(answer%100/10);
-                        userAnswerSet.add(answer%10);
+                        int num1, num2, num3;
+                        num1 = answer/100;
+                        num2 = answer%100/10;
+                        num3 = answer%10;
+                        if(num1 == 0 || num2 == 0 || num3 == 0) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요"); //0이 섞인 경우
+                        else{
+                            userAnswerSet.add(num1);
+                            userAnswerSet.add(num2);
+                            userAnswerSet.add(num3);
+                        }
+
 
                         if(userAnswerSet.size() != 3) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요");
                         else{
@@ -253,6 +266,18 @@ class Game extends JPanel{
         }
     }
 
+    public void restartGame(){
+        String[] option = {"다시 시작","종료"};
+        int select = JOptionPane.showOptionDialog(this,"게임이 종료되었습니다","게임종료",0,JOptionPane.INFORMATION_MESSAGE,null,option,option[0]);
+
+        if(select == 0){ //다시 시작
+            init();
+        }else{ //종료 누르면 시스템 종료
+            System.out.println("종료");
+            
+            //종료하기 위한 상위 패널에 함수 만들어야 할 거 같음
+        }
+    }
 
 }//Game
 
