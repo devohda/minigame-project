@@ -11,9 +11,12 @@ class Game extends JPanel{
     private JButton btnGeul;
     private JTextField userinput;
     private JLabel lblScore;
+    private JLabel lblState;
     private int _score;
 
     private renewScore update; //actionListener class
+
+    Font fnt = new Font("배달의민족 주아",Font.BOLD,20);
 
     public Game() {
         setPreferredSize(new Dimension(500,700));
@@ -24,19 +27,24 @@ class Game extends JPanel{
         btnGeul = new JButton("결");
         userinput = new JTextField(5);
         lblScore = new JLabel("점수 : 0");
+        lblState = new JLabel("게임을 시작합니다.");
         _score = 0;
 
         update = new renewScore();
         btnHap.addActionListener(update);
         btnGeul.addActionListener(update);
 
+        lblScore.setFont(fnt);
+        lblState.setFont(fnt);
 
-        lblScore.setBounds(10,0,50,50);
+        lblScore.setBounds(10,0,200,50);
+        lblState.setBounds(10,50,500,50);
         btnGeul.setBounds(50, 635, 70,30);
         btnHap.setBounds(180,635,70,30);
         userinput.setBounds(260,635, 160, 30);
 
         add(lblScore);
+        add(lblState);
         add(btnHap);
         add(btnGeul);
         add(userinput);
@@ -148,34 +156,100 @@ class Game extends JPanel{
 
 
         //합 개수 맞나 검증용
-        /*if(hapNum == 0){
+        if(hapNum == 0){
             System.out.println("NONE");
         }
         else{
             for(HashSet obj : hapset){
                 System.out.println(obj);
             }
-        }*/
+        }
         
     }
 
     /*******************************/
     /********* 점수 계산하기 *********/
     /*******************************/
-    private int cnt = 0;
+
+
+    private ArrayList <HashSet> deleteHapset = new ArrayList<>();
+    
     class renewScore implements ActionListener{
+        
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            
             if (e.getSource() == btnGeul){ //결 누른 경우
-                System.out.println("click");
-                cnt += 3;
-
+                if(hapset.isEmpty()){
+                    _score += 3;
+                    lblState.setText("'결' 입니다. 짝짝짝!!! 3점 획득하셨습니다!");
+                    lblState.setForeground(Color.BLUE);
+                }
+                else{
+                    _score -= 1;
+                    lblState.setText("아직 합이 될 수 있는 경우가 남았습니다.");
+                    lblState.setForeground(Color.RED);
+                }
             }
             else if(e.getSource() == btnHap){ //합을 누른 경우
-                cnt--;
+
+                int answer = 0;
+
+                //숫자 3개가 입력된 경우가 아닐 때(문자 등의 기호가 들어간 경우)
+                try{
+                    String userInput = userinput.getText();
+                    answer = Integer.parseInt(userInput);
+                    System.out.println(answer);
+                    if(answer>=1000) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요");
+                    else{
+                        HashSet<Integer> userAnswerSet = new HashSet<Integer>(3);
+                        userAnswerSet.add(answer/100);
+                        userAnswerSet.add(answer%100/10);
+                        userAnswerSet.add(answer%10);
+
+                        if(userAnswerSet.size() != 3) lblState.setText("1 ~ 9사이 서로 다른 숫자 3개를 입력하세요");
+                        else{
+                            boolean isBefore = false;
+                            for (HashSet i : deleteHapset){
+                                if(userAnswerSet.equals(i)){
+                                    lblState.setText("카드 " + userAnswerSet + " 은(는) 이미 나왔습니다.");
+                                    lblState.setForeground(Color.RED);
+                                    _score--;
+                                    isBefore = true;
+                                    break;
+                                }
+                            }
+                            
+                            if(!isBefore){ //이전에 나오지 않은 경우
+                                boolean isAnswer = false;
+                                for(HashSet i : hapset){
+                                    if(userAnswerSet.equals(i)){
+                                        deleteHapset.add(i);
+                                        hapset.remove(i);
+                                        lblState.setText("카드 " + userAnswerSet + " 은(는) '합' 입니다.");
+                                        lblState.setForeground(Color.BLUE);
+                                        _score++;
+                                        isAnswer = true;
+                                        break;
+                                    }
+                                }
+                                if(!isAnswer){
+                                    _score--;
+                                    lblState.setText("카드 " + userAnswerSet + " 은(는) 합이 아닙니다.");
+                                    lblState.setForeground(Color.RED);
+                                }
+                            }
+                            
+                        }
+                    }
+
+                }catch (NumberFormatException ex){
+                    lblState.setText("숫자 3개를 입력하세요");
+                }finally {
+                    userinput.setText("");
+                }
             }
-            lblScore.setText("점수 : " + cnt);
+            lblScore.setText("점수 : " + _score);
         }
     }
 
