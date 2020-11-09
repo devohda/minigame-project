@@ -7,18 +7,12 @@ public class Card {
     private Shape shape;
     private BackgroundColor backgroundColor;
 
-    //constructor
+
     public Card(){
         setCardColor();
         setShape();
         setBackgroundColor();
-    }
-
-    public void getCardInfo(){
-        System.out.println("color is " + cardColor);
-        System.out.println("shape is " + shape);
-        System.out.println("backGround color is " + backgroundColor);
-    }
+    }// constructor
 
     //set 함수
     //랜덤으로 배경색, 모양, 도형의 색 결정
@@ -44,63 +38,16 @@ public class Card {
     public Shape getShape(){
         return shape;
     }
-    public BackgroundColor getBackgroundColor() {
-        return backgroundColor;
+    public BackgroundColor getBackgroundColor() { return backgroundColor; }
+
+    // to String
+    @Override
+    public String toString() {
+        return "Card{" +
+                "cardColor=" + cardColor +
+                ", shape=" + shape +
+                ", backgroundColor=" + backgroundColor +
+                '}';
     }
 
-
-    //카드 그리기(GUI)
-    class Figure extends JPanel{
-
-        public void paintComponent(Graphics paint){
-
-            super.paintComponent(paint); //패널 내 잔상 지우기
-            
-            //카드 배경 칠하기
-            switch (backgroundColor){
-                case WHITE -> {
-                    super.setBackground(Color.WHITE);
-                }
-                case GRAY -> {
-                    super.setBackground(Color.GRAY);
-                }
-                case BLACK -> {
-                    super.setBackground(Color.BLACK);
-                }
-            }
-            
-            // 도형 색깔 결정하기
-            switch (cardColor){
-                case RED -> {
-                    paint.setColor(Color.RED);
-                }
-                case YELLOW -> {
-                    paint.setColor(Color.YELLOW);
-                }
-                case GREEN -> {
-                    paint.setColor(Color.GREEN);
-                }
-            }
-            
-            //도형 그리기
-            switch (shape){
-
-                case CIRCLE -> { //원 그리기
-                    paint.fillOval(15,15,70,70);
-                }
-                case SQUARE -> { // 사각형 그리기
-                    paint.fillRect(15,15,70,70);
-                }
-                case TRIANGLE -> { //삼각형 그리기
-                    int x[] = { 15, 50, 85 };
-                    int y[] = { 85, 15, 85 };
-                    paint.fillPolygon( x, y, 3 );
-                }
-            }
-        }
-    }
-
-    public Figure drawCard(){
-        return new Figure();
-    }
-}
+}//class Card
