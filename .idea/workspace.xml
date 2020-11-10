@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="295b4681-83dd-4392-bdff-f18e8a16e57d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BackgroundColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameBoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tmp" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -74,6 +66,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -85,6 +88,7 @@
       <updated>1604979546402</updated>
       <workItem from="1604979547543" duration="1931000" />
       <workItem from="1604982172793" duration="64000" />
+      <workItem from="1604988002981" duration="2883000" />
     </task>
     <servers />
   </component>
@@ -101,6 +105,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="0" key="#Project_Structure" timestamp="1604979555164">
@@ -115,21 +120,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1604982233060" />
-    <state width="1495" height="111" key="GridCell.Tab.0.bottom" timestamp="1604982237358">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605010237467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="111" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604982237358" />
-    <state width="1495" height="111" key="GridCell.Tab.0.center" timestamp="1604982237358">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605010237467" />
+    <state width="1495" height="176" key="GridCell.Tab.0.bottom" timestamp="1605010239394">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="111" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604982237358" />
-    <state width="1495" height="111" key="GridCell.Tab.0.left" timestamp="1604982237358">
+    <state width="1495" height="176" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605010239393" />
+    <state width="1495" height="176" key="GridCell.Tab.0.center" timestamp="1605010239393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="111" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604982237358" />
-    <state width="1495" height="111" key="GridCell.Tab.0.right" timestamp="1604982237358">
+    <state width="1495" height="176" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605010239393" />
+    <state width="1495" height="176" key="GridCell.Tab.0.left" timestamp="1605010239393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="111" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604982237358" />
+    <state width="1495" height="176" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605010239393" />
+    <state width="1495" height="176" key="GridCell.Tab.0.right" timestamp="1605010239393">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1495" height="176" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605010239393" />
   </component>
 </project>
