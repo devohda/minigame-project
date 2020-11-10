@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 
-class Game extends JPanel{
+public class Game extends JPanel {
 
     private JButton btnHap;
     private JButton btnGeul;
@@ -50,7 +50,7 @@ class Game extends JPanel{
     }//constructor
 
     private Card[] boardInfo;
-    private ArrayList <HashSet> hapset;
+    private ArrayList<HashSet> hapset;
     private ArrayList <HashSet> deleteHapset;
 
     public void init(){
@@ -62,6 +62,7 @@ class Game extends JPanel{
         hapset = new ArrayList<>();
         deleteHapset = new ArrayList<>();
 
+        boardInfo = new Card[9];
         setGameBoardInfo(); //게임 초기화
         GameBoardPanel gameBoard = new GameBoardPanel(boardInfo);
         gameBoard.setBounds(0,100,500,500);
@@ -77,7 +78,6 @@ class Game extends JPanel{
 
     public void setGameBoardInfo(){
 
-        boardInfo = new Card[9];
         for (int i = 0; i < 9; i++) {
             Card tmp = new Card();
 
@@ -171,18 +171,18 @@ class Game extends JPanel{
                 System.out.println(obj);
             }
         }
-        
+
     }
 
     /*******************************/
     /********* 점수 계산하기 *********/
     /*******************************/
 
-    class renewScore implements ActionListener{
-        
+    class renewScore implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             if (e.getSource() == btnGeul){ //결 누른 경우
                 if(hapset.isEmpty()){
                     _score += 3;
@@ -232,7 +232,7 @@ class Game extends JPanel{
                                     break;
                                 }
                             }
-                            
+
                             if(!isBefore){ //이전에 나오지 않은 경우
                                 boolean isAnswer = false;
                                 for(HashSet i : hapset){
@@ -252,7 +252,7 @@ class Game extends JPanel{
                                     lblState.setForeground(Color.RED);
                                 }
                             }
-                            
+
                         }
                     }
 
@@ -274,11 +274,7 @@ class Game extends JPanel{
             init();
         }else{ //종료 누르면 시스템 종료
             System.out.println("종료");
-            
             //종료하기 위한 상위 패널에 함수 만들어야 할 거 같음
         }
     }
-
-}//Game
-
-
+}

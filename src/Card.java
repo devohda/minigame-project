@@ -1,8 +1,17 @@
-import javax.swing.*;
-import java.awt.*;
 import java.util.Random;
-public class Card {
 
+enum CardColor{
+    RED, YELLOW, GREEN
+}
+enum Shape{
+    CIRCLE, SQUARE, TRIANGLE
+}
+enum BackgroundColor{
+    BLACK, GRAY, WHITE
+}
+
+
+public class Card {
     private CardColor cardColor;
     private Shape shape;
     private BackgroundColor backgroundColor;
@@ -17,20 +26,20 @@ public class Card {
     //set 함수
     //랜덤으로 배경색, 모양, 도형의 색 결정
     Random random = new Random();
-    
+
     public void setCardColor(){ //
-        CardColor cardColorSet[] = CardColor.values();
+        CardColor[] cardColorSet = CardColor.values();
         cardColor = cardColorSet[random.nextInt(3)];
     }
     public void setShape(){
-        Shape shapeSet[] = Shape.values();
+        Shape[] shapeSet = Shape.values();
         shape = shapeSet[random.nextInt(3)];
     }
     public void setBackgroundColor(){
-        BackgroundColor backgroundColorSet[] = BackgroundColor.values();
+        BackgroundColor[] backgroundColorSet = BackgroundColor.values();
         backgroundColor = backgroundColorSet[random.nextInt(3)];
     }
-    
+
     //get 함수
     public CardColor getCardColor(){
         return cardColor;
@@ -49,5 +58,4 @@ public class Card {
                 ", backgroundColor=" + backgroundColor +
                 '}';
     }
-
 }//class Card

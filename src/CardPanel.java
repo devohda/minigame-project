@@ -3,13 +3,14 @@ import java.awt.*;
 
 public class CardPanel extends JPanel {
 
-    Card card;
+    private Card card;
 
-    CardPanel(Card c){
+    public CardPanel(Card c){
         setPreferredSize(new Dimension(100,100));
         card = c;
-    }
-
+    }//constructor
+    
+    //카드 패널 GUI 만들기
     public void paintComponent(Graphics paint){
 
         super.paintComponent(paint); //패널 내 잔상 지우기
@@ -56,4 +57,4 @@ public class CardPanel extends JPanel {
         }
 
     }//paintComponent()
-} //class CardPanel
+}

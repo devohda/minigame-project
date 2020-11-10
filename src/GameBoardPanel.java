@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameBoardPanel extends JPanel {
-    
-    GameBoardPanel(Card boardInfo[]){
+    public GameBoardPanel(Card boardInfo[]){
         setBackground(Color.pink);
         setPreferredSize(new Dimension(500,500));
         setLayout(null); //레이아웃 배치 관리자 끄기
@@ -18,4 +17,4 @@ public class GameBoardPanel extends JPanel {
         }
 
     }//constructor
-}//class GameBoardPanel
+}
